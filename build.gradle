@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id 'maven-publish'
+    id 'signing'
+}
+
+repositories {
+  mavenCentral()
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+ext {
+  jacksonVersion = "2.9.8"
+  slf4jVersion = "1.7.26"
+  log4j2Version = "2.11.2"
+}
+
+dependencies {
+  compile "org.apache.commons:commons-lang3:3.9"
+  compile "commons-io:commons-io:2.6"
+  compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}",
+          "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}",
+          "com.fasterxml.jackson.module:jackson-module-parameter-names:${jacksonVersion}"
+  compile "org.apache.httpcomponents:httpclient:4.5.8"
+  compile "org.slf4j:slf4j-api:1.7.26"
+
+  testCompile "org.apache.logging.log4j:log4j-api:$log4j2Version",
+       "org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version",
+       "org.apache.logging.log4j:log4j-jcl:$log4j2Version",
+       "junit:junit:4.12"
+       
+}
+
+
+javadoc {
+  source = sourceSets.main.allJava
+	classpath = configurations.compile
+	options {
+		links += ['https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/', 'https://docs.oracle.com/javase/8/docs/api/']
+		encoding 'UTF-8'        
+	}
+	verbose = false
+}
+
+compileJava {
+  options.compilerArgs <<  '-parameters'
+}
+
+test {
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
+}
+
