@@ -71,12 +71,12 @@ public class BitoProClientTest {
     
   }
 
+  //run with caution, order will be placed
   @Ignore
   @Test
   public void testMarketOrder() throws IOException {
-    BigDecimal totalAmount = new BigDecimal("1");
+    BigDecimal totalAmount = new BigDecimal("0.1");
     OrderResponse or = pairClient.createMarketOrder(OrderAction.BUY, totalAmount);
-
     logger.info("market order response: {}", or);
   }
 }

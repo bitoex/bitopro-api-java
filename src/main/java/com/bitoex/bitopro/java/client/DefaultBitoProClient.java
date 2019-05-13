@@ -76,8 +76,7 @@ public class DefaultBitoProClient extends AbstractBitoProClient implements BitoP
 
         or.setType(OrderType.MARKET);
         or.setAction(action);
-        //TODO will be removed in future release
-        or.setPrice(BigDecimal.ONE);
+        or.setPrice(BigDecimal.ONE);//TODO will be removed in future release
         or.setAmount(totalAmount);
         or.setTimestamp(System.currentTimeMillis());
         return executeRequest("/orders/" + pair, HttpPost.METHOD_NAME, Optional.of(or), OrderResponse.class);

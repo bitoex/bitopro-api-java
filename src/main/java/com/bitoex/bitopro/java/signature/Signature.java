@@ -17,7 +17,7 @@ public final class Signature {
     private final String email;
 
     /**
-     * Constructor
+     * Constructor.
      * @param email email of the account
      * @param secret secret of the API key for the account
      */
@@ -46,7 +46,7 @@ public final class Signature {
     }
 
     /**
-     * Provide payload and signature with specified Json data
+     * Provide payload and signature with specified Json data.
      * @param json json data to be signed
      * @return {@link BitoProPayload}
      */
